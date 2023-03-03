@@ -1,17 +1,29 @@
-import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+const path = require('path')
 import { md } from './mdResolve.js'
-// const md = require('./mdResolve.js').default
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), md()],
+  plugins: [
+    vue(),
+    md(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
+    })
+  ],
   resolve: {
+    // 配置路径别名
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': path.resolve(__dirname, './src')
+    },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   },
   css: {
     // less预处理器

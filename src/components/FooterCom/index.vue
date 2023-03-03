@@ -3,5 +3,5 @@ import './index.less'
 </script>
 
 <template>
-  <div class="home-page"></div>
+  <div class="footer-com"></div>
 </template>
