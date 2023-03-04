@@ -22,14 +22,21 @@
           display: inline-block;
           margin-top: 18px;
           transform: scale(1, 0.9);
+          z-index: 999;
+          transition: all 0.2s;
           p:first-child {
             font-size: 28px;
+
             // transform: scale(1, 0.9);
           }
           p:last-child {
             font-size: 21px;
             zoom: 0.7;
             margin-left: 103px;
+          }
+          &:hover {
+            // color: transparent;
+            text-shadow: 0px 0px 10px #fff;
           }
         }
       }
@@ -45,13 +52,60 @@
           display: inline-block;
           padding: 10px;
           margin-top: 12px;
-          font-size: 17px;
-          &:hover {
-            background-color: transparent;
-          }
-          a {
-            color: white;
-          }
+          font-size: 19px;
+          letter-spacing: 1px;
+          background-color: transparent;
+
+          color: white;
+          transition: all 0.2s;
+        }
+        .el-menu-item.is-active {
+          cursor: default;
+
+          cursor: default;
+          color: transparent;
+        }
+        .el-menu-item.HOME:not(.is-active):hover {
+          text-shadow: 0 0 4px #3276fe;
+          color: #3276fe !important;
+        }
+        .HOME.is-active {
+          -webkit-text-stroke: 1px #3276fe;
+        }
+        .el-menu-item.BLOGS:not(.is-active):hover {
+          text-shadow: 0 0 4px #f0a0d0;
+          color: #f0a0d0 !important;
+        }
+        .BLOGS.is-active {
+          -webkit-text-stroke: 1px #f0a0d0;
+        }
+        .el-menu-item.ABOUT:not(.is-active):hover {
+          text-shadow: 0 0 4px #ffe71c;
+          color: #ffe71c !important;
+        }
+        .ABOUT.is-active {
+          -webkit-text-stroke: 1px #ffe71c;
+        }
+        .el-menu-item.PHOTO:not(.is-active):hover {
+          text-shadow: 0 0 4px #01dd83;
+          color: #01dd83 !important;
+        }
+        .PHOTO.is-active {
+          -webkit-text-stroke: 1px #01dd83;
+        }
+        .el-menu-item.TOOLS:not(.is-active):hover {
+          text-shadow: 0 0 4px #dc00d0;
+          color: #dc00d0 !important;
+        }
+        .TOOLS.is-active {
+          -webkit-text-stroke: 1px #dc00d0;
+        }
+        .el-menu-item.GAME:not(.is-active):hover {
+          text-shadow: 0 0 4px #f8463e;
+          color: #f8463e !important;
+        }
+        .GAME.is-active {
+          -webkit-text-stroke: 1px #f8463e;
         }
       }
     }

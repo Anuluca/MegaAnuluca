@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home/index.vue'
 import About from '../views/About/index.vue'
+import NotFound from '../views/404/index.vue'
 
 export const routes = [
   //【HOME】广场
@@ -8,9 +9,12 @@ export const routes = [
     path: '/',
     name: 'HOME',
     component: Home,
+
     meta: {
       //路由元信息
-      title: 'HOME' //拿取当前路由的title
+      title: 'HOME', //拿取当前路由的title
+      hasPic: true, //是否显示左侧图片
+      ifShow: true
       //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
     }
   },
@@ -20,61 +24,93 @@ export const routes = [
     name: 'BLOGS',
     component: About,
     meta: {
-      //路由元信息
-      title: 'BLOGS' //拿取当前路由的title
-      //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
-    }
+      title: 'BLOGS',
+      hasPic: true,
+      ifShow: true
+    },
+    redirect: '/404'
   },
   // 【GAME】游戏
   {
     path: '/game',
     name: 'GAME',
     component: About,
+
     meta: {
-      //路由元信息
-      title: 'GAME' //拿取当前路由的title
-      //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
-    }
+      title: 'GAME',
+      hasPic: true,
+      ifShow: true
+    },
+    redirect: '/404'
   },
   // 【TOOLS】工具
   {
     path: '/tools',
     name: 'TOOLS',
     component: About,
+
     meta: {
-      //路由元信息
-      title: 'TOOLS' //拿取当前路由的title
-      //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
-    }
+      title: 'TOOLS',
+      hasPic: true,
+      ifShow: true
+    },
+    redirect: '/404'
   },
   // 【photo】摄影
   {
     path: '/photo',
     name: 'PHOTO',
     component: About,
+
     meta: {
-      //路由元信息
-      title: 'PHOTO' //拿取当前路由的title
-      //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
-    }
+      title: 'PHOTO',
+      hasPic: true,
+      ifShow: true
+    },
+    redirect: '/404'
   },
   // 【ABOUT】关于
   {
     path: '/about',
     name: 'ABOUT',
     component: About,
+
     meta: {
-      //路由元信息
-      title: 'ABOUT' //拿取当前路由的title
-      //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
+      title: 'ABOUT',
+      hasPic: true,
+      ifShow: true
     }
+  },
+  // 【404】404
+  {
+    path: '/404',
+    name: '404',
+    component: NotFound,
+    meta: {
+      title: '404',
+      hasPic: false,
+      ifShow: false
+    }
+  },
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/404'
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: routes
+  history: createWebHistory(),
+  routes
 })
+
+//路由守卫
+// router.beforeEach((to, from, next) => {
+//   if (to.path != '/') {
+//     router.push({ name: '404' })
+//   } else {
+//     next()
+//   }
+// })
 
 router.afterEach((to, from) => {
   if (to.meta.title) {

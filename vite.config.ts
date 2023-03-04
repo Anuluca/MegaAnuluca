@@ -33,5 +33,6 @@ export default defineConfig({
         additionalData: '@import "./src/assets/style/global.less";'
       }
     }
-  }
+  },
+  base: './'
 })

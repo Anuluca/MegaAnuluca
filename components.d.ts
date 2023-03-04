@@ -9,15 +9,21 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BackController: typeof import('./src/components/BackController/index.vue')['default']
+    BackSakura: typeof import('./src/components/BackSakura/index.vue')['default']
+    BackStars: typeof import('./src/components/BackStars/index.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCol: typeof import('element-plus/es')['ElCol']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-    Footer: typeof import('./src/components/Footer/index.vue')['default']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     FooterCom: typeof import('./src/components/FooterCom/index.vue')['default']
     LeftImg: typeof import('./src/components/LeftImg/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    StarBack: typeof import('./src/components/StarBack/index.vue')['default']
   }
 }

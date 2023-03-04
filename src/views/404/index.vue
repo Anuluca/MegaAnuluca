@@ -3,5 +3,5 @@ import './index.less'
 </script>
 
 <template>
-  <div class="about-page">about</div>
+  <div class="404-page">404 NOT FOUND</div>
 </template>

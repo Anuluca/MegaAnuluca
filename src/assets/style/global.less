@@ -1,10 +1,18 @@
 @import url(./font.less);
 body {
   background-color: #0c0c0c;
-  color: white;
+  color: #fff;
   cursor: default;
   overflow: hidden;
 }
 * {
   text-decoration: none;
+}
+.el-button.is-link.is-disabled {
+  color: #fff !important;
+  cursor: default !important;
+}
+.el-button.is-link.el-button--danger:not(.is-disabled) {
+  color: #ff004e !important;
+  text-decoration: underline;
 }

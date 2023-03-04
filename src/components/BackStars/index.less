@@ -1,0 +1,59 @@
+.body-color {
+  background-attachment: fixed;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+//主题
+.dawn {
+  background: radial-gradient(
+    220% 105% at top center,
+    #182644 10%,
+    #53355a 40%,
+    #9c5b6e 65%,
+    #c0c092
+  );
+} //主题
+.night {
+  background: radial-gradient(
+    220% 105% at top center,
+    #000a1f 10%,
+    #0c090c 40%,
+    #0c0a0a 65%,
+    #01000e
+  );
+}
+
+@keyframes rotate {
+  0% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
+.star-back {
+  transform: perspective(500px);
+  transform-style: preserve-3d;
+  position: absolute;
+  bottom: 0;
+  perspective-origin: 50% 100%;
+  left: 50%;
+  animation: rotate 90s infinite linear;
+  .star {
+    width: 2px;
+    height: 2px;
+    background: #f7f7b6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0 -300px;
+    transform: translate3d(0, 0, -300px);
+    backface-visibility: hidden;
+  }
+}
