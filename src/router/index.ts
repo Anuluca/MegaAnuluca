@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home/index.vue'
 import About from '../views/About/index.vue'
 import NotFound from '../views/404/index.vue'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 export const routes = [
   //【HOME】广场
@@ -79,7 +81,8 @@ export const routes = [
       title: 'ABOUT',
       hasPic: true,
       ifShow: true
-    }
+    },
+    redirect: '/404'
   },
   // 【404】404
   {
@@ -98,21 +101,27 @@ export const routes = [
   }
 ]
 
+NProgress.configure({
+  easing: 'ease', // 动画方式
+  speed: 500, // 递增进度条的速度
+  showSpinner: false, // 是否显示加载 icon
+  trickleSpeed: 200, // 自动递增间隔
+  minimum: 0.3 // 初始化时的最小百分比
+})
+
 const router = createRouter({
   history: createWebHistory(),
   routes
 })
 
 //路由守卫
-// router.beforeEach((to, from, next) => {
-//   if (to.path != '/') {
-//     router.push({ name: '404' })
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  NProgress.start() // 进度条开始
+  next()
+})
 
 router.afterEach((to, from) => {
+  NProgress.done() // 进度条结束
   if (to.meta.title) {
     document.title = '/ ' + to.meta.title + " / Luca's LiberiaGarden"
   }

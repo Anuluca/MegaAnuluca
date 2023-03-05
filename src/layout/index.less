@@ -1,9 +1,9 @@
 .layout-page {
-  .el-menu-layout {
+  .el-menu-layout-all {
     width: 100vw;
-    height: 100px;
-    padding: 0 6vw;
-    // background-color: red;
+    height: 150px;
+    padding: 0 5vw;
+    transition: opacity 1.5s;
     .el-menu {
       border-bottom: 0;
       .logo-box {
@@ -12,27 +12,37 @@
         padding: 15px;
         display: flex;
         align-items: center;
-        min-width: 300px;
+        min-width: 430px;
+        margin-top: 4px;
         img {
-          height: 50px;
+          height: 80px;
           margin-right: 10px;
-          margin-top: 5px;
+          margin-top: 3px;
         }
         .right {
           display: inline-block;
-          margin-top: 18px;
+          margin-top: 8px;
           transform: scale(1, 0.9);
           z-index: 999;
           transition: all 0.2s;
+          cursor: none;
+          position: relative;
           p:first-child {
-            font-size: 28px;
+            font-size: 32px;
 
             // transform: scale(1, 0.9);
           }
           p:last-child {
-            font-size: 21px;
-            zoom: 0.7;
-            margin-left: 103px;
+            // font-size: 21px;
+            // zoom: 0.7;
+            // margin-left: 103px;
+            position: absolute;
+            font-family: 'cusContext';
+            transform: scale(1, 0.65);
+            font-size: 30px;
+            zoom: 1;
+            right: 0;
+            margin-top: -8px;
           }
           &:hover {
             // color: transparent;
@@ -47,12 +57,13 @@
         font-family: 'cusTitle';
         text-decoration: none;
         // background-color: pink;
-        min-width: 608px;
+        min-width: 635px;
         .el-menu-item {
           display: inline-block;
           padding: 10px;
-          margin-top: 12px;
-          font-size: 19px;
+          // margin-top: 12px;
+          font-size: 20px;
+          line-height: 115px;
           letter-spacing: 1px;
           background-color: transparent;
 

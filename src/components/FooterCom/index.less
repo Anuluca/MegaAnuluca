@@ -2,7 +2,7 @@
   width: 96vw;
   height: 26px;
   background-color: rgba(53, 53, 53, 0.795);
-  box-shadow: 0px -20px 20px 0px rgba(255, 255, 255, 0.062);
+  box-shadow: 0px -20px 20px 0px rgb(255 255 255 / 3%);
   position: fixed;
   bottom: 0;
   left: 4vw;
@@ -19,6 +19,7 @@
   .left {
     min-width: 130px;
     .language {
+      transition: all 0.2s;
       transform: scale(1, 0.74);
       span {
         font-family: 'cusContext';
@@ -36,28 +37,43 @@
   }
   .center {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.089);
-    line-height: 28px;
-    font-size: 14px;
+    line-height: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
     font-family: 'cusPixel';
+    display: inline-block;
     overflow: hidden;
-    .marquee-wrap {
-      transition: all 0.2s;
-      white-space: nowrap;
-      -webkit-animation: marquee 30s linear infinite;
-      animation: marquee 30s linear infinite;
-      > span {
-        color: #000;
-      }
-      > b {
-        font-weight: bold;
-        a {
-          margin: 0 10px;
-          // color: #409eff;
-          border-bottom: 1px solid #ffffff6b;
-          // text-shadow: 0 0 3px rgb(127, 127, 255);
-          font-weight: 400;
-          cursor: pointer;
+    .expand {
+      background-color: rgb(215 215 215 / 9%);
+      width: 100%;
+      transition: all 1s;
+      .marquee-wrap {
+        transition: all 0.2s;
+        white-space: nowrap;
+        -webkit-animation: marquee 30s linear infinite;
+        animation: marquee 30s linear infinite;
+        animation-play-state: running;
+        &:hover {
+          animation-play-state: paused;
+        }
+        > span {
+          color: #000;
+        }
+        > b {
+          font-weight: bold;
+          a {
+            margin: 0 10px;
+            // color: #409eff;
+            border-bottom: 1px solid #ffffff6b;
+            // text-shadow: 0 0 3px rgb(127, 127, 255);
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s;
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.068);
+              text-shadow: 0 0 3px rgba(255, 255, 255, 0.527);
+            }
+          }
         }
       }
     }
@@ -81,9 +97,10 @@
   .right {
     text-align: center;
     min-width: 595px;
-    .text {
+    .text-links {
       margin-left: 15px;
       transform: scale(1, 0.74);
+      transition: all 1s;
       display: inline-block;
       .el-button {
         margin: 0 1px;
