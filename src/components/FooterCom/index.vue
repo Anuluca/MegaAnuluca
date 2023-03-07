@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import './index.less'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted } from 'vue'
 import { visualState } from '@/stores'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElLoading, ElMessage, ElMessageBox } from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 
 const router = useRouter()
+const route = useRoute()
 const visualStateStore = visualState()
-const currentRouter = computed(() => {
+const hasPic = computed(() => {
+  console.log('aaa', router.currentRoute.value.meta.hasPic)
+
   return router.currentRoute.value.meta.hasPic
+})
+const currentRouter = computed(() => {
+  return route.path
 })
 let nightMode = ref()
 
@@ -24,8 +30,8 @@ onMounted(() => {
     expand_element['style'].width = '100%'
     expand_element['style'].overflow = 'hidden'
     text_element['style'].opacity = '1'
+    nightMode.value = localStorage.getItem('theme') === 'dark'
   }, 0)
-  nightMode.value = localStorage.getItem('theme') === 'dark'
 })
 
 const changeLanguage = () => {
@@ -36,10 +42,24 @@ const changeLanguage = () => {
   })
 }
 const changeTheme = () => {
-  console.log(nightMode.value)
-  const currentMode = nightMode.value ? 'dark' : 'light'
-  // localStorage.setItem('theme', currentMode)
-  visualStateStore.setTheme(currentMode)
+  console.log(currentRouter.value)
+
+  if (currentRouter.value === '/') {
+    const loadingInstance = ElLoading.service({ fullscreen: true, text: 'Theme Changing' })
+    console.log(nightMode.value)
+    setTimeout(() => {
+      const currentMode = nightMode.value ? 'dark' : 'light'
+      // localStorage.setItem('theme', currentMode)
+      visualStateStore.setTheme(currentMode)
+    }, 500)
+    setTimeout(() => {
+      loadingInstance.close()
+    }, 500)
+  } else {
+    const currentMode = nightMode.value ? 'dark' : 'light'
+    // localStorage.setItem('theme', currentMode)
+    visualStateStore.setTheme(currentMode)
+  }
 }
 
 const contact = (type: string) => {
@@ -62,7 +82,7 @@ const contact = (type: string) => {
 </script>
 
 <template>
-  <div :class="{ 'footer-com': true, 'full-footer': !currentRouter }">
+  <div :class="{ 'footer-com': true, 'full-footer': !hasPic }">
     <!-- 左侧 -->
     <div class="left">
       <div class="language">

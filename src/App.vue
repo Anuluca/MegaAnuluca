@@ -12,7 +12,7 @@ onMounted(() => {
   if (localStorage.getItem('theme')) {
     visualStateStore.setTheme(localStorage.getItem('theme'))
   } else {
-    localStorage.setItem('item', 'dark')
+    localStorage.setItem('theme', 'dark')
   }
 })
 </script>

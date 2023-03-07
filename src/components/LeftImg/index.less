@@ -48,7 +48,7 @@
   }
   .img-position {
     position: relative;
-    margin-left: calc(5.2vw);
+    margin-left: calc(3vw);
     width: 45vw;
     height: calc(100vh - 100px);
     transition: all 1s;
@@ -56,21 +56,19 @@
     .show-img-light,
     .show-img-light2 {
       // width: calc(40vw - 50px);
-      height: calc(100vh - 50px);
+      height: calc(115vh - 150px);
       min-width: 350px;
       position: absolute;
       z-index: 1;
-      bottom: 50px;
+      bottom: 10px;
     }
     .show-img {
-      left: 10px;
+      left: -10px;
     }
-    .show-img-light .show-img-light2 {
-      bottom: 10px;
-      left: 40px;
+    .show-img-light,
+    .show-img-light2 {
+      bottom: 30px;
+      left: 30px;
     }
-  }
-  .show-img-light .show-img-light2 {
-    bottom: 5px;
   }
 }

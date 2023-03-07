@@ -37,28 +37,30 @@ onMounted(() => {
 
   setTimeout(() => {
     imgSelf['style'].opacity = '1'
-    imgSelf['style'].bottom = '0'
+    imgSelf['style'].bottom = '10px'
     left1['style'].top = '-20px'
     left2['style'].top = '-13px'
     left2['style'].transform = 'skewY(30deg)'
     left3['style'].opacity = '1'
+  }, 0)
+  setTimeout(() => {
     title['style'].marginLeft = '0'
     title['style'].opacity = '1'
-  }, 0)
+  }, 400)
   // 图片立体书效果
   reduce(
     (document.onmousemove = function (e) {
       // 通过event.clientX和event.clilentY获取鼠标位置
       // 将鼠标的x轴值和Y轴值赋值给图片的left和top
-      mainImg[0]['style'].bottom = -e.clientY / 100 + 50 + 'px'
-      mainImg[0]['style'].left = e.clientX / 100 + 'px'
-      mainImgLight[0]['style'].bottom = -e.clientY / 30 + 50 + 'px'
-      mainImgLight[0]['style'].left = e.clientX / 30 - 20 + 'px'
+      mainImg[0]['style'].bottom = -e.clientY / 100 + 10 + 'px'
+      mainImg[0]['style'].left = e.clientX / 100 - 20 + 'px'
+      mainImgLight[0]['style'].bottom = -e.clientY / 30 + 35 + 'px'
+      mainImgLight[0]['style'].left = e.clientX / 30 + 5 + 'px'
       mainImgLight[0]['style'].transform = `rotateY(${e.clientX / 60}deg) rotateX(${
         e.clientY / 40
       }deg)`
-      mainImgLight2[0]['style'].bottom = e.clientY / 30 + 50 + 'px'
-      mainImgLight2[0]['style'].left = -e.clientX / 30 + 20 + 'px'
+      mainImgLight2[0]['style'].bottom = e.clientY / 30 + 35 + 'px'
+      mainImgLight2[0]['style'].left = -e.clientX / 30 + 5 + 'px'
       mainImgLight2[0]['style'].transform = `rotateY(${-e.clientX / 60}deg) rotateX(${
         -e.clientY / 40
       }deg)`

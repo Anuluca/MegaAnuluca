@@ -7,16 +7,22 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    img {
+    .porygon {
+      width: 394px;
+      height: 369px;
       position: absolute;
       top: 0;
       right: 0;
+      background-size: cover;
+      background-image: url('@/assets/img/porygon.png');
+      transition: all 1s, opacity 2s;
     }
     .show-text {
       position: absolute;
       bottom: 0;
       left: 0;
       font-family: 'cusTitle2';
+      transition: textShadow 0.2s, color 0.5s;
       p {
         font-size: 29px;
         letter-spacing: -2px;
@@ -55,8 +61,9 @@
         background-color: #ffffffba;
         text-shadow: 0 0 8px #2c2c2c;
         color: #000000;
+        overflow: hidden;
         height: 30px;
-        transition: all 0.3s;
+        transition: all 0.3s, width 0.5s;
         cursor: pointer;
         &:hover {
           background-color: #9b9b9b42;

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home/index.vue'
-import About from '../views/About/index.vue'
 import NotFound from '../views/404/index.vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -24,65 +23,60 @@ export const routes = [
   {
     path: '/blogs',
     name: 'BLOGS',
-    component: About,
+    component: NotFound,
     meta: {
       title: 'BLOGS',
-      hasPic: true,
+      hasPic: false,
       ifShow: true
-    },
-    redirect: '/404'
+    }
   },
   // 【GAME】游戏
   {
     path: '/game',
     name: 'GAME',
-    component: About,
+    component: NotFound,
 
     meta: {
       title: 'GAME',
-      hasPic: true,
+      hasPic: false,
       ifShow: true
-    },
-    redirect: '/404'
+    }
   },
   // 【TOOLS】工具
   {
     path: '/tools',
     name: 'TOOLS',
-    component: About,
+    component: NotFound,
 
     meta: {
       title: 'TOOLS',
-      hasPic: true,
+      hasPic: false,
       ifShow: true
-    },
-    redirect: '/404'
+    }
   },
   // 【photo】摄影
   {
     path: '/photo',
     name: 'PHOTO',
-    component: About,
+    component: NotFound,
 
     meta: {
       title: 'PHOTO',
-      hasPic: true,
+      hasPic: false,
       ifShow: true
-    },
-    redirect: '/404'
+    }
   },
   // 【ABOUT】关于
   {
     path: '/about',
     name: 'ABOUT',
-    component: About,
+    component: NotFound,
 
     meta: {
       title: 'ABOUT',
-      hasPic: true,
+      hasPic: false,
       ifShow: true
-    },
-    redirect: '/404'
+    }
   },
   // 【404】404
   {
@@ -94,10 +88,6 @@ export const routes = [
       hasPic: false,
       ifShow: false
     }
-  },
-  {
-    path: '/:catchAll(.*)',
-    redirect: '/404'
   }
 ]
 
@@ -115,9 +105,17 @@ const router = createRouter({
 })
 
 //路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((guard) => {
   NProgress.start() // 进度条开始
-  next()
+  console.log('guard', ['/'].indexOf(guard.fullPath))
+
+  //检查路由是否存在
+  if (!router.hasRoute(guard.name)) {
+    //三层不同404路由
+
+    router.push('/404')
+    return
+  }
 })
 
 router.afterEach((to, from) => {

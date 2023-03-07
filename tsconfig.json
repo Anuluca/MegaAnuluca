@@ -7,7 +7,9 @@
     "*.ts",
     "*.tsx",
     "src/**/*.md", // md文件
-    "mdResolve.js"
+    "mdResolve.js",
+    "src/**/*.ts",
+    "src/*.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",
