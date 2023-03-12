@@ -12,6 +12,8 @@ declare module '@vue/runtime-core' {
     BackController: typeof import('./src/components/BackController/index.vue')['default']
     BackStars: typeof import('./src/components/BackStars/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCarousel: typeof import('element-plus/es')['ElCarousel']
+    ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElMenu: typeof import('element-plus/es')['ElMenu']

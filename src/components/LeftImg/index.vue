@@ -17,17 +17,15 @@ const currentRouter = router.currentRoute.value.name
 
 onMounted(() => {
   //入场动画
-  const leftImg = document.getElementsByClassName('left-img')[0]
   const imgSelf = document.getElementsByClassName('img-position')[0]
   const left1 = document.getElementsByClassName('left1')[0]
   const left2 = document.getElementsByClassName('left2')[0]
   const left3 = document.getElementsByClassName('left3')[0]
   const title = document.getElementsByClassName('big-title')[0]
-  console.log(leftImg)
 
   imgSelf['style'].opacity = '0'
   imgSelf['style'].bottom = '-40px'
-  imgSelf['style'].transition = 'opacity 2s, bottom 1s'
+  // imgSelf['style'].transition = 'opacity 2s, bottom 1s'
   left1['style'].top = '20px'
   left2['style'].transform = 'skewY(0deg)'
   left2['style'].top = '23px'
@@ -53,14 +51,14 @@ onMounted(() => {
       // 通过event.clientX和event.clilentY获取鼠标位置
       // 将鼠标的x轴值和Y轴值赋值给图片的left和top
       mainImg[0]['style'].bottom = -e.clientY / 100 + 10 + 'px'
-      mainImg[0]['style'].left = e.clientX / 100 - 20 + 'px'
+      mainImg[0]['style'].left = e.clientX / 100 - 50 + 'px'
       mainImgLight[0]['style'].bottom = -e.clientY / 30 + 35 + 'px'
-      mainImgLight[0]['style'].left = e.clientX / 30 + 5 + 'px'
+      mainImgLight[0]['style'].left = e.clientX / 30 - 25 + 'px'
       mainImgLight[0]['style'].transform = `rotateY(${e.clientX / 60}deg) rotateX(${
         e.clientY / 40
       }deg)`
       mainImgLight2[0]['style'].bottom = e.clientY / 30 + 35 + 'px'
-      mainImgLight2[0]['style'].left = -e.clientX / 30 + 5 + 'px'
+      mainImgLight2[0]['style'].left = -e.clientX / 30 - 25 + 'px'
       mainImgLight2[0]['style'].transform = `rotateY(${-e.clientX / 60}deg) rotateX(${
         -e.clientY / 40
       }deg)`
@@ -68,6 +66,28 @@ onMounted(() => {
     1000
   )
 })
+
+const hideLeftImg = () => {
+  const leftImg = document.getElementsByClassName('lll')[0]
+  const leftImgAll = document.getElementsByClassName('left-img')[0]
+  const showButton = document.getElementsByClassName('show-left-button')[0]
+
+  showButton['style'].bottom = '0'
+  leftImg['style'].marginLeft = '-1000px'
+  leftImg['style'].opacity = '0'
+  leftImgAll['style'].width = '0'
+}
+
+const showLeftImg = () => {
+  const leftImg = document.getElementsByClassName('lll')[0]
+  const leftImgAll = document.getElementsByClassName('left-img')[0]
+  const showButton = document.getElementsByClassName('show-left-button')[0]
+
+  showButton['style'].bottom = '-28px'
+  leftImg['style'].marginLeft = '0'
+  leftImg['style'].opacity = '1'
+  leftImgAll['style'].width = '40vw'
+}
 
 //销毁onmousemove
 onBeforeUnmount(() => {
@@ -78,14 +98,19 @@ onBeforeUnmount(() => {
 <template>
   <div class="left-img">
     <!-- 背景 -->
-    <div class="left1"></div>
-    <div class="left2"></div>
-    <div class="left3"></div>
-    <div class="img-position">
-      <img :src="ShowImg" class="show-img" />
-      <img :src="ShowImg_light" class="show-img-light" />
-      <img :src="ShowImg_light2" class="show-img-light2" />
+    <div class="lll">
+      <div class="left1" @click="hideLeftImg()">
+        <div class="slip">{{ '<' }}</div>
+      </div>
+      <div class="left2"></div>
+      <div class="left3"></div>
+      <div class="img-position">
+        <img :src="ShowImg" class="show-img" />
+        <img :src="ShowImg_light" class="show-img-light" />
+        <img :src="ShowImg_light2" class="show-img-light2" />
+      </div>
+      <div class="big-title">{{ currentRouter }}</div>
     </div>
-    <div class="big-title">{{ currentRouter }}</div>
+    <div class="show-left-button" @click="showLeftImg()">{{ '>' }}</div>
   </div>
 </template>

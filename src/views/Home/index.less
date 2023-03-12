@@ -1,3 +1,104 @@
 .home-page {
   // background-color: red;
+  .right-container {
+    > .el-carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      transition: all 1s;
+      > .el-carousel__container {
+        width: calc(100% - 3.7vw - 5px);
+      }
+      > .el-carousel__indicators {
+        margin-left: calc(2.5vw - 12px);
+        > .el-carousel__indicator {
+          > .el-carousel__button {
+            width: 12px;
+            height: 40px;
+            background-color: rgba(53, 53, 53, 0.795);
+          }
+        }
+        > .el-carousel__indicator.is-active {
+          cursor: default;
+          margin: 0;
+          &:hover {
+            > .el-carousel__button {
+              opacity: 1;
+            }
+          }
+          > .el-carousel__button {
+            cursor: default;
+            background-color: #ff004e;
+            box-shadow: 0 0 10px #ff004e;
+          }
+        }
+      }
+      .next-page {
+        z-index: 3;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        writing-mode: vertical-lr;
+        font-size: 50px;
+        font-family: 'cusTitle2';
+        color: #ff004e;
+        text-shadow: 0 0 10px #ff004e;
+        transition: all 0.1s;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+          // text-shadow: 0 0 2px #000;
+          padding-top: 5px;
+          bottom: 5px;
+        }
+      }
+      .prev-page {
+        z-index: 3;
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        writing-mode: vertical-lr;
+        font-size: 50px;
+        font-family: 'cusTitle2';
+        color: #ff004e;
+        text-shadow: 0 0 10px #ff004e;
+        transition: all 0.1s;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+          // text-shadow: 0 0 2px #000;
+          top: -5px;
+        }
+      }
+      .home-page-container {
+        width: 100%;
+        height: 100%;
+        // background-color: black;
+        position: relative;
+        margin-left: 20px;
+        .top-controller {
+          width: 100%;
+          height: 50px;
+          // background-color: orange;
+        }
+        .inner-text {
+          // background-color: yellow;
+          width: 100%;
+          height: calc(100% - 100px);
+          position: absolute;
+          top: 50px;
+        }
+        .bottom-controller {
+          width: 100%;
+          height: 50px;
+          position: absolute;
+          bottom: 0;
+          // background-color: orange;
+        }
+      }
+    }
+  }
 }

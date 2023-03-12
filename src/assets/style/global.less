@@ -16,6 +16,7 @@ body {
 * {
   text-decoration: none;
   font-family: 'SiYuan';
+  user-select: none;
 }
 .el-button.is-link.is-disabled {
   color: #fff !important;
@@ -48,4 +49,20 @@ body {
   &:hover {
     background-color: #ff004e !important;
   }
+}
+.main-container {
+  display: flex;
+  justify-content: center;
+  .right-container {
+    width: 100%;
+    height: calc(100vh - 165px);
+    padding-left: calc(3.7vw - 26px);
+    z-index: 0;
+    margin-top: -20px;
+    transition: width 0.8s;
+    // overflow: auto;
+  }
+}
+.trans {
+  opacity: 0;
 }
