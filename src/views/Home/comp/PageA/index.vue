@@ -10,8 +10,8 @@ import temp3 from '@/assets/img/temp3.jpg'
     <div class="top-controller"></div>
     <div class="inner-text">
       <h1>WELCOME！</h1>
-      <p>My name is Anuluca,a web developer and a Pokemon Trainer.</p>
-      <el-carousel height="400px" trigger="click" ref="carousel" :interval="10000">
+      <p>My name is Anuluca, a web developer and a Pokemon Trainer.</p>
+      <el-carousel height="400px" trigger="click" ref="carousel" :interval="5000">
         <el-carousel-item
           :style="
             'background-image: url(' + temp1 + ');    background-size: cover;overflow: visible;'

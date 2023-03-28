@@ -40,8 +40,8 @@ onMounted(() => {
         <div class="logo-box" index="0">
           <img :src="showLogo" />
           <div class="right">
-            <p>路卡的自由庭院岛</p>
-            <!-- <p>Luca's LiberGarden</p> -->
+            <!-- <p>路卡的自由庭院岛</p> -->
+            <p>Luca's LiberGarden</p>
             <p>MEGA v0.1 alpha</p>
           </div>
         </div>

@@ -2,6 +2,8 @@
 import './index.less'
 import LeftImg from '@/components/LeftImg/index.vue'
 import { onMounted, ref } from 'vue'
+import { debounce } from 'lodash'
+
 import PageA from './comp/PageA/index.vue'
 import PageB from './comp/PageB/index.vue'
 import PageC from './comp/PageC/index.vue'
@@ -16,11 +18,20 @@ onMounted(() => {
   const carousel = document.getElementsByClassName('carousel-container')[0]
   carousel['style'].left = '60vw'
   carousel['style'].opacity = '0'
+  // window.addEventListener('wheel', debounce(wheelEvent, 10000))
   setTimeout(() => {
     carousel['style'].left = '0'
     carousel['style'].opacity = '1'
   }, 400)
 })
+
+const wheelEvent = debounce((e) => {
+  if (e.deltaY >= 0) {
+    carousel.value.next()
+  } else {
+    carousel.value.prev()
+  }
+}, 100)
 
 const toNext = () => {
   carousel.value.next()
@@ -44,7 +55,7 @@ const change = (e) => {
 </script>
 
 <template>
-  <div class="home-page main-container">
+  <div class="home-page main-container" @mousewheel="wheelEvent">
     <LeftImg />
     <div class="right-container">
       <el-carousel
