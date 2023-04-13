@@ -1,17 +1,20 @@
 .home-page-a {
   opacity: 1;
   transition: opacity 0.5s;
+  overflow-x: visible;
+
   .inner-text {
-    height: 562px !important;
+    height: auto !important;
     bottom: 72px !important;
     top: auto !important;
+    overflow-x: visible;
     > h1 {
       font-family: 'cusTitle2';
       color: #fff;
-      font-size: 135px;
+      font-size: 7rem;
       letter-spacing: -10px;
       transform: scale(1, 0.9);
-      line-height: 110px;
+      line-height: 6rem;
       text-shadow: 0 0 10px #fff;
     }
     > p {
@@ -24,8 +27,9 @@
     }
     > .el-carousel {
       position: relative;
-      width: 900px;
-      margin-top: 32px;
+      max-width: 850px;
+      aspect-ratio: 13 / 6;
+      margin-top: 1rem;
       border-radius: 5px;
       box-shadow: rgb(0 0 0 / 33%) 0px 2px 20px 0px;
       cursor: pointer;
@@ -35,8 +39,10 @@
       }
       .cas-inner {
         width: 100%;
-        height: 300px;
-        bottom: 0;
+        // max-width: 850px;
+        aspect-ratio: 13 / 6;
+        // height: 100%;
+        top: 10px;
         left: 0;
         z-index: 1;
         background-image: linear-gradient(to top, #111111, transparent);
@@ -59,8 +65,8 @@
           font-size: 20px;
           writing-mode: vertical-lr;
           transform: scale(0.7, 1) rotate(180deg);
-          bottom: 36px;
-          left: 30px;
+          bottom: 55px;
+          left: 13px;
           position: absolute;
         }
         .date {
@@ -87,8 +93,8 @@
       position: absolute;
       width: 420px;
       transform: scale(0.85, 1) rotate(-90deg);
-      bottom: 172px;
-      left: 730px;
+      bottom: 190px;
+      right: -245px;
     }
   }
 }

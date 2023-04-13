@@ -13,6 +13,10 @@ const contextOpac = ref(false)
 const nextShow = ref(true)
 const prevShow = ref(false)
 const carousel = ref(null)
+const nowId = ref(0)
+const pageb = ref()
+const pagec = ref()
+const paged = ref()
 
 onMounted(() => {
   const carousel = document.getElementsByClassName('carousel-container')[0]
@@ -41,12 +45,14 @@ const toPrev = () => {
   carousel.value.prev()
 }
 const change = (e) => {
+  nowId.value = 2
   if (e === 0) {
     nextShow.value = true
     prevShow.value = false
   } else if (e === 1 || e === 2) {
     nextShow.value = true
     prevShow.value = true
+    pageb.value.onChangePage()
   } else {
     nextShow.value = false
     prevShow.value = true
@@ -72,13 +78,13 @@ const change = (e) => {
           <PageA :class="{ trans: contextOpac }" />
         </el-carousel-item>
         <el-carousel-item>
-          <PageB />
+          <PageB ref="pageb" />
         </el-carousel-item>
         <el-carousel-item>
-          <PageC />
+          <PageC ref="pagec" />
         </el-carousel-item>
         <el-carousel-item>
-          <PageD />
+          <PageD ref="paged" />
         </el-carousel-item>
         <div class="next-page" @click="toNext" v-if="nextShow">》</div>
         <div class="prev-page" @click="toPrev" v-if="prevShow">《</div>

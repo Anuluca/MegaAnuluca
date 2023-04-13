@@ -11,7 +11,7 @@ import temp3 from '@/assets/img/temp3.jpg'
     <div class="inner-text">
       <h1>WELCOME！</h1>
       <p>My name is Anuluca, a web developer and a Pokemon Trainer.</p>
-      <el-carousel height="400px" trigger="click" ref="carousel" :interval="5000">
+      <el-carousel trigger="click" ref="carousel" :interval="5000">
         <el-carousel-item
           :style="
             'background-image: url(' + temp1 + ');    background-size: cover;overflow: visible;'
@@ -38,7 +38,7 @@ import temp3 from '@/assets/img/temp3.jpg'
           <div class="module">BLOGS / ByTalk</div>
         </div>
       </el-carousel>
-      <div class="TOP">========TOP</div>
+      <div class="TOP">>TOP</div>
     </div>
     <div class="bottom-controller"></div>
   </div>

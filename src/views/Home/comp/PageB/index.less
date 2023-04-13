@@ -1,2 +1,136 @@
 .home-page-b {
+  .inner-text {
+    height: 562px !important;
+    top: auto !important;
+    > h1 {
+      font-family: 'cusTitle2';
+      color: #346ee1;
+      font-size: 60px;
+      letter-spacing: -6px;
+      transform: scale(1, 0.85);
+      line-height: 60px;
+      text-shadow: 0 0 10px #6690e449;
+      margin-bottom: 10px;
+      margin-left: 20px;
+    }
+    .project-list {
+      width: 100%;
+      margin-left: 20px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      .project-item {
+        width: 380px;
+        height: 250px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        position: relative;
+        zoom: 0.62;
+        z-index: 1;
+        display: inline-block;
+        cursor: pointer;
+        &:hover {
+          img {
+            // transform: rotateY(10deg) rotateX(-20deg);
+            width: 340px;
+            height: 220px;
+            top: -10px;
+            left: -10px;
+          }
+          > div {
+            > p {
+              font-size: 46px;
+            }
+            text-shadow: 0 0 15px #ffffff;
+            transform: rotateY(0) rotateX(0);
+          }
+          .project-time {
+            font-size: 30px;
+          }
+          .project-type {
+            left: -5px;
+            font-size: 25px;
+            transform: rotate(0);
+            text-shadow: 0 0 3px #000;
+            opacity: 1;
+          }
+        }
+        > div {
+          > p {
+            font-size: 50px;
+          }
+          text-shadow: 0 0 15px #ffffff;
+          transform: rotateY(20deg) rotateX(-30deg);
+          transition: all 0.2s;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 320px;
+          height: 200px;
+          border-radius: 3px;
+          box-shadow: rgb(0 0 0 / 33%) 0px 2px 20px 0px;
+          transition: all 0.2s;
+        }
+        .project-name,
+        .project-time {
+          transition: all 0.2s;
+          font-family: 'cusTitle2';
+          transform: scale(1, 0.9);
+          letter-spacing: -2px;
+          text-shadow: 0 0 5px #ffffff20;
+          font-size: 45px;
+          margin-top: 180px;
+          width: 420px;
+          position: relative;
+          z-index: 20;
+        }
+        .project-time {
+          font-size: 30px;
+          margin-top: -5px;
+        }
+        .project-type {
+          transform: rotate(-90deg);
+          font-weight: bold;
+          transform-origin: bottom left;
+          color: #ffffff;
+          opacity: 0.7;
+          position: absolute;
+          bottom: 80px;
+          left: 10px;
+          display: inline-block;
+          text-align: left;
+          transition: all 0.5s;
+        }
+      }
+      .project-next-page {
+        background-color: #fff;
+        font-family: 'cusTitle2';
+        font-size: 26px;
+        color: #1f1f1f;
+        display: inline-block;
+        padding-top: 10px;
+        cursor: pointer;
+        vertical-align: middle;
+        margin-top: -160px;
+        position: relative;
+        z-index: 10;
+        transition: all 0.1s;
+        &:hover {
+          background-color: #1f1f1f;
+          color: #fff;
+        }
+      }
+    }
+    #bg-echart {
+      position: absolute;
+      top: -50px;
+      right: -20vw;
+      width: 80vw;
+      height: calc(92vh - 50px);
+      cursor: default !important;
+    }
+  }
 }
