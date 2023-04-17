@@ -11,7 +11,7 @@ import temp3 from '@/assets/img/temp3.jpg'
     <div class="inner-text">
       <h1>WELCOME！</h1>
       <p>My name is Anuluca, a web developer and a Pokemon Trainer.</p>
-      <el-carousel trigger="click" ref="carousel" :interval="5000">
+      <el-carousel trigger="click" ref="carousel" :interval="5000" :autoplay="false">
         <el-carousel-item
           :style="
             'background-image: url(' + temp1 + ');    background-size: cover;overflow: visible;'

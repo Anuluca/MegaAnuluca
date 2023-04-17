@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElImage: typeof import('element-plus/es')['ElImage']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
