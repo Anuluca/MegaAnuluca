@@ -13,7 +13,8 @@ export const routes = [
 
     meta: {
       //路由元信息
-      title: 'HOME', //拿取当前路由的title
+      titleEn: 'HOME', //拿取当前路由的title
+      titleCn: '主页', //拿取当前路由的title
       hasPic: true, //是否显示左侧图片
       ifShow: true
       //这里边还可设置其他的状态，比如登录的标志，路由是否缓存的标志
@@ -25,7 +26,8 @@ export const routes = [
     name: 'BLOGS',
     component: NotFound,
     meta: {
-      title: 'BLOGS',
+      titleEn: 'BLOGS',
+      titleCn: '博客',
       hasPic: false,
       ifShow: true
     }
@@ -37,7 +39,8 @@ export const routes = [
     component: NotFound,
 
     meta: {
-      title: 'GAME',
+      titleEn: 'GAME',
+      titleCn: '游戏',
       hasPic: false,
       ifShow: true
     }
@@ -49,7 +52,8 @@ export const routes = [
     component: NotFound,
 
     meta: {
-      title: 'TOOLS',
+      titleEn: 'TOOLS',
+      titleCn: '工具',
       hasPic: false,
       ifShow: true
     }
@@ -61,7 +65,8 @@ export const routes = [
     component: NotFound,
 
     meta: {
-      title: 'PHOTO',
+      titleEn: 'PHOTO',
+      titleCn: '图册',
       hasPic: false,
       ifShow: true
     }
@@ -73,7 +78,8 @@ export const routes = [
     component: NotFound,
 
     meta: {
-      title: 'ABOUT',
+      titleEn: 'ABOUT',
+      titleCn: '关于',
       hasPic: false,
       ifShow: true
     }

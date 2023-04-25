@@ -6,6 +6,9 @@ import ShowImg_light2 from '@/assets/img/show_1_light2.png'
 import { onBeforeUnmount, onMounted } from 'vue'
 import { reduce } from '@/utils'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 const mainImg = document.getElementsByClassName('show-img')
 const mainImgLight = document.getElementsByClassName('show-img-light')
@@ -13,7 +16,10 @@ const mainImgLight2 = document.getElementsByClassName('show-img-light2')
 const router = useRouter()
 
 //当前路由
-const currentRouter = router.currentRoute.value.name
+const currentRouter =
+  locale.value === 'zhCn'
+    ? router.currentRoute.value.meta.titleCn
+    : router.currentRoute.value.meta.titleEn
 
 onMounted(() => {
   //入场动画
@@ -109,7 +115,13 @@ onBeforeUnmount(() => {
         <img :src="ShowImg_light" class="show-img-light" />
         <img :src="ShowImg_light2" class="show-img-light2" />
       </div>
-      <div class="big-title">{{ currentRouter }}</div>
+      <div class="big-title">
+        {{
+          locale === 'zhCn'
+            ? router.currentRoute.value.meta.titleCn
+            : router.currentRoute.value.meta.titleEn
+        }}
+      </div>
     </div>
     <div class="show-left-button" @click="showLeftImg()">{{ '>' }}</div>
   </div>

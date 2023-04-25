@@ -6,6 +6,13 @@ import Logo from '@/assets/img/logo.png'
 import LogoDark from '@/assets/img/logo_black.png'
 import { computed, onMounted } from 'vue'
 import { visualState } from '@/stores'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+onMounted(() => {
+  console.log('AAA', locale.value)
+})
 
 const route = useRoute()
 const visualStateStore = visualState()
@@ -41,15 +48,16 @@ onMounted(() => {
           <img :src="showLogo" />
           <div class="right">
             <!-- <p>路卡的自由庭院岛</p> -->
-            <p>Luca's LiberGarden</p>
+            <p>{{ $t('name') }}</p>
             <p>MEGA v0.1 alpha</p>
           </div>
         </div>
         <div class="flex-grow" />
         <div class="menu-box">
           <RouterLink v-for="(item, index) in filterRoutes" :key="index" :to="item.path">
-            <el-menu-item :index="item.path" :class="item.name">
-              {{ item.name }}
+            <el-menu-item :index="item.path" :class="item.meta.titleEn">
+              <!-- {{ locale === 'zhCn' ? item.meta.titleCn : item.meta.titleEn }} -->
+              {{ item.meta.titleEn }}
             </el-menu-item>
           </RouterLink>
         </div>

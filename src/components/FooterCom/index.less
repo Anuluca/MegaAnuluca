@@ -39,8 +39,8 @@
     width: 100%;
     line-height: 25px;
     font-size: 12px;
-    letter-spacing: 1px;
-    font-family: 'cusPixel';
+    letter-spacing: 1.2px;
+    font-family: 'siyuan';
     display: inline-block;
     overflow: hidden;
     .expand {
@@ -57,21 +57,21 @@
           animation-play-state: paused;
         }
         > span {
-          color: #000;
+          color: #000000;
         }
         > b {
-          font-weight: bold;
+          font-weight: 400 !important;
           a {
-            margin: 0 10px;
-            // color: #409eff;
-            border-bottom: 1px solid #ffffff6b;
-            // text-shadow: 0 0 3px rgb(127, 127, 255);
+            padding: 10px;
+            // text-decoration: underline #ffffff6b;
             font-weight: 400;
             cursor: pointer;
             transition: all 0.2s;
+            color: #fff;
             &:hover {
-              background-color: rgba(255, 255, 255, 0.068);
               text-shadow: 0 0 3px rgba(255, 255, 255, 0.527);
+              background-color: rgba(0, 0, 0, 0.5);
+              color: #fff;
             }
           }
         }

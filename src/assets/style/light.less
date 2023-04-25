@@ -1,18 +1,40 @@
+// 文字颜色
+@textColor: #181818;
+@backColor: #ffffff;
+
 .light {
-  background-color: #fff !important;
+  background-color: @backColor !important;
   .layout-page .logo-box .right p,
   .layout-page .menu-box .el-menu-item:not(.is-active),
   .not-found-page .show-text p {
-    color: #181818;
+    color: @textColor;
   }
   .not-found-page .show-text p:last-child {
     background-color: #000000ba;
     text-shadow: 0 0 8px #dadada;
-    color: #ffffff;
+    color: @backColor;
     &:hover {
       background-color: #49494942;
-      color: #000000;
-      text-shadow: 0 0 8px #000000;
+      color: @textColor;
+      text-shadow: 0 0 8px @textColor;
+    }
+  }
+  .home-page-a {
+    .inner-text {
+      > h1 {
+        color: @textColor;
+      }
+      > p {
+        color: @textColor;
+      }
+    }
+  }
+  .home-page-b {
+    .project-item {
+      .project-name,
+      .project-time {
+        color: @textColor;
+      }
     }
   }
 }

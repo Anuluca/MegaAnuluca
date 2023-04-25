@@ -39,7 +39,9 @@ onMounted(() => {
       <div class="porygon" />
       <div class="show-text">
         <p>404 NOT FOUND</p>
+        <!-- <p>{{ $t('notFound.description') }}</p> -->
         <p>THE DEVELOPMENT OF THIS PAGE REQUIRES MORE EFFORT</p>
+        <!-- <p class="last-show-text" @click="router.push('/')">{{ $t('notFound.back') }}</p> -->
         <p class="last-show-text" @click="router.push('/')">CLICK HERE TO RETURN TO HOMEPAGE</p>
       </div>
     </div>

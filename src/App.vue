@@ -7,8 +7,8 @@ import { visualState } from './stores'
 
 const visualStateStore = visualState()
 
-// 主题判断
 onMounted(() => {
+  // 主题判断
   if (localStorage.getItem('theme')) {
     visualStateStore.setTheme(localStorage.getItem('theme'))
   } else {

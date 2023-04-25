@@ -5,19 +5,59 @@ import { ref, computed, onMounted } from 'vue'
 import { visualState } from '@/stores'
 import { ElLoading, ElMessage, ElMessageBox } from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 const router = useRouter()
 const route = useRoute()
 const visualStateStore = visualState()
 const hasPic = computed(() => {
-  console.log('aaa', router.currentRoute.value.meta.hasPic)
-
   return router.currentRoute.value.meta.hasPic
 })
 const currentRouter = computed(() => {
   return route.path
 })
 let nightMode = ref()
+let nowChinese = ref(true)
+
+const recommend = [
+  {
+    title: '解决Chrome80版本SameSite属性导致Cookie无法跨域的问题',
+    sort: 'BLOGS/前端开发',
+    date: '2023-02-23',
+    color: '#f0a0d0',
+    href: '/404'
+  },
+  {
+    title: '《宝可梦 朱/紫》',
+    sort: 'GAMES/NINTENDO SWITCH',
+    date: '2023-02-23',
+    color: '#f8463e',
+    href: '/404'
+  },
+  {
+    title: '泽塔奥特曼-皮套摄影',
+    sort: 'PHOTOS/摄影',
+    date: '2023-02-23',
+    color: '#dc00d0',
+    href: '/404'
+  },
+  {
+    title: '垃圾话生成器',
+    sort: 'TOOLS',
+    date: '2023-02-23',
+    color: '#dc00d0',
+    href: '/404'
+  },
+  {
+    title: '自由庭院岛简史',
+    sort: 'ABOUT',
+    date: '2023-02-23',
+    color: '#ffe71c',
+    href: '/404'
+  }
+]
 
 onMounted(() => {
   // 底部新闻条入场动画
@@ -31,15 +71,14 @@ onMounted(() => {
     expand_element['style'].overflow = 'hidden'
     text_element['style'].opacity = '1'
     nightMode.value = localStorage.getItem('theme') === 'dark'
+    nowChinese.value = localStorage.getItem('lang') === 'zhCn'
   }, 0)
 })
 
-const changeLanguage = () => {
-  ElMessageBox.alert('中文版正在开发中', '提示', {
-    // if you want to disable its autofocus
-    // autofocus: false,
-    confirmButtonText: 'OK'
-  })
+const changeLanguage = (lang) => {
+  localStorage.setItem('lang', lang)
+  locale.value = lang
+  nowChinese.value = localStorage.getItem('lang') === 'zhCn'
 }
 const changeTheme = () => {
   console.log(currentRouter.value)
@@ -86,12 +125,13 @@ const contact = (type: string) => {
     <!-- 左侧 -->
     <div class="left">
       <div class="language">
-        <el-tooltip effect="dark" content="开发中" placement="top">
-          <el-button link type="danger" @click="changeLanguage">中文</el-button>
-        </el-tooltip>
-
+        <el-button link type="danger" @click="changeLanguage('zhCn')" :disabled="nowChinese"
+          >中文</el-button
+        >
         <el-button link type="danger" disabled>|</el-button>
-        <el-button link type="danger" disabled>English</el-button>
+        <el-button link type="danger" @click="changeLanguage('en')" :disabled="!nowChinese"
+          >English</el-button
+        >
       </div>
     </div>
     <!-- 中间 -->
@@ -101,35 +141,14 @@ const contact = (type: string) => {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-          <font color="#fc5531">優しい人にならなくちゃ, 心が悴む前に。</font
+          <span style="color: #ffc61b">優しい人にならなくちゃ, 心が悴む前に。</span
           >&nbsp;&nbsp;|&nbsp;&nbsp;
           <b
             >RECOMMEND:
-            <a style="color: aliceblue"
-              >解决Chrome80版本SameSite属性导致Cookie无法跨域的问题<font color="#f0a0d0"
-                >[BLOGS/前端开发]</font
-              >
-              <font color="#000">2023-02-23</font></a
-            >
-            <a
-              >《宝可梦 <font color="#f8463e">朱</font>/<font color="#bb45b0">紫</font>》<font
-                color="#f8463e"
-                >[GAMES/NINTENDO SWITCH]</font
-              >
-              <font color="#000">2023-02-23</font></a
-            >
-            <a
-              >泽塔奥特曼-皮套摄影<font color="#01dd83">[PHOTOS/摄影]</font>
-              <font color="#000">2023-02-23</font></a
-            >
-            <a
-              >垃圾话生成器<font color="#dc00d0">[TOOLS]</font>
-              <font color="#000">2023-02-23</font></a
-            >
-            <a
-              >自由庭院岛简史<font color="#ffe71c">[ABOUT]</font>
-              <font color="#000">2023-02-23</font></a
-            >
+            <a v-for="(item, key) in recommend" :key="key" :href="item.href">
+              {{ item.title }}
+              <span :style="'color: ' + item.color">[{{ item.sort }} {{ item.date }}]</span>
+            </a>
           </b>
         </div>
       </div>
