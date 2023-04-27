@@ -29,13 +29,10 @@ const clickLisence = () => {
         </p>
       </div>
       <div class="bottom-text">
-        <!-- <p>The copyright statement for articles and pictures:</p> -->
         <p>{{ $t('home.lisence1') }}</p>
         <p>
           {{ $t('home.lisence2') }}
           <span class="lisence" @click="clickLisence">{{ $t('home.lisence3') }}</span> ）.
-          <!-- free to reprint, non-commercial, non-derivative, with attribution （
-          <span class="lisence" @click="clickLisence">Creative Commons 3.0 lisence</span> ） . -->
         </p>
       </div>
     </div>
