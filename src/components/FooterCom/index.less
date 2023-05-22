@@ -9,7 +9,7 @@
   z-index: 999;
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  // overflow: hidden;
   transition: all 0.2s;
   > div {
     // border: 1px solid red;
@@ -99,17 +99,20 @@
     min-width: 595px;
     .text-links {
       margin-left: 15px;
-      transform: scale(1, 0.74);
       transition: all 1s;
       display: inline-block;
-      .el-button {
+      > span,
+      > .el-button {
+        position: relative;
         margin: 0 1px;
         span {
+          transform: scale(1, 0.74);
           font-family: 'cusContext';
           font-size: 19px;
           line-height: 20px;
         }
       }
+
       .is-disabled {
         margin-left: 15px;
       }
@@ -146,6 +149,69 @@
           left: -2px;
         }
       }
+    }
+  }
+  .TWITTER_detail,
+  .WEIBO_detail,
+  .BILIBILI_detail,
+  .EMAIL_detail,
+  .GITHUB_detail {
+    position: absolute;
+    display: block;
+    bottom: -140px;
+    z-index: -1;
+    opacity: 0;
+    cursor: pointer;
+    // bottom: 40px;
+    transform: translateX(-50%) !important;
+    left: 50%;
+    width: 250px;
+    height: 100px;
+    transition: all 0.4s;
+    box-shadow: 0 1px 15px #0000003b;
+    img {
+      width: 250px;
+      height: 100px;
+    }
+  }
+  .BILIBILI_detail {
+    width: 280px !important;
+    height: 280px !important;
+    bottom: -300px;
+    img {
+      width: 280px !important;
+      height: 280px !important;
+    }
+  }
+  .GITHUB_detail {
+    width: 148px !important;
+    height: 32px !important;
+    border-radius: 16px;
+    img {
+      width: 148px !important;
+      height: 32px !important;
+      border-radius: 16px;
+    }
+  }
+  .TWITTER_detail {
+    width: 246px !important;
+    height: 62px !important;
+    border-radius: 31px;
+    img {
+      width: 246px !important;
+      height: 62px !important;
+      border-radius: 31px;
+    }
+  }
+  .WEIBO_detail {
+    width: 346px !important;
+    height: 500px !important;
+    background-color: red;
+    bottom: -540px;
+    overflow: hidden;
+    img {
+      width: 346px !important;
+      height: 500px !important;
     }
   }
 }

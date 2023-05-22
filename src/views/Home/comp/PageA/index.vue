@@ -1,8 +1,43 @@
 <script setup lang="ts">
 import './index.less'
-import temp1 from '@/assets/img/temp1.jpg'
-import temp2 from '@/assets/img/temp2.jpg'
-import temp3 from '@/assets/img/temp3.jpg'
+import { ref } from 'vue'
+import img1 from '@/assets/img/temp1.jpg'
+import img2 from '@/assets/img/temp2.jpg'
+import img3 from '@/assets/img/temp3.jpg'
+
+const nowIndex = ref(0)
+
+const showList = [
+  {
+    img: img1,
+    title: "Luca's LiberGarden in MegaEvolution!",
+    module: 'BLOGS / ByTalk',
+    date: '2023. 2. 27',
+    link: '/404'
+  },
+  {
+    img: img2,
+    title: '我也不知道放什么',
+    module: 'BLOGS / ByTalk',
+    date: '2023. 2. 27',
+    link: '/404'
+  },
+  {
+    img: img3,
+    title: '看看设计图',
+    module: 'BLOGS / ByTalk',
+    date: '2023. 2. 27',
+    link: '/404'
+  }
+]
+
+const change = (e) => {
+  nowIndex.value = e
+}
+
+const clickItem = (link) => {
+  document.location.href = link
+}
 </script>
 
 <template>
@@ -11,31 +46,26 @@ import temp3 from '@/assets/img/temp3.jpg'
     <div class="inner-text">
       <h1>WELCOME！</h1>
       <p>My name is Anuluca, a web developer and a Pokemon Trainer.</p>
-      <el-carousel trigger="click" ref="carousel" :interval="5000" :autoplay="false">
+      <el-carousel
+        trigger="click"
+        ref="carousel"
+        :interval="5000"
+        :autoplay="true"
+        @click="clickItem(showList[nowIndex].link)"
+        @change="change"
+      >
         <el-carousel-item
+          v-for="(item, key) in showList"
+          :key="key"
           :style="
-            'background-image: url(' + temp1 + ');    background-size: cover;overflow: visible;'
-          "
-        >
-        </el-carousel-item>
-        <el-carousel-item
-          style="background-color: blue"
-          :style="
-            'background-image: url(' + temp2 + ');    background-size: cover;overflow: visible;'
-          "
-        >
-        </el-carousel-item>
-        <el-carousel-item
-          style="background-color: green"
-          :style="
-            'background-image: url(' + temp3 + ');    background-size: cover;overflow: visible;'
+            'background-image: url(' + item.img + ');    background-size: cover;overflow: visible;'
           "
         >
         </el-carousel-item>
         <div class="cas-inner">
-          <div class="title">Luca's LiberGarden in MegaEvolution!</div>
-          <div class="date">2023. 2. 27</div>
-          <div class="module">BLOGS / ByTalk</div>
+          <div class="title">{{ showList[nowIndex].title }}</div>
+          <div class="date">{{ showList[nowIndex].date }}</div>
+          <div class="module">{{ showList[nowIndex].module }}</div>
         </div>
       </el-carousel>
       <div class="TOP">>TOP</div>

@@ -1,0 +1,117 @@
+.game-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .inner-div {
+    width: 1400px;
+    height: calc(100vh - 150px);
+    /* background-color: red; */
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    > div > div {
+      transition: all 0.2s;
+      width: 400px;
+      height: 100px;
+      position: absolute;
+      z-index: 1;
+      cursor: pointer;
+      background-color: red;
+      &:hover {
+        background-color: yellow;
+      }
+    }
+    .main-chara {
+      width: 1400px;
+      height: calc(100vh - 150px);
+      background-image: url('@/assets/img/show_1.png');
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .menu-first {
+      opacity: 1;
+      // display: block;
+      transition: all 0.2s;
+    }
+    .menu-second {
+      opacity: 0;
+      // display: none;
+      transition: all 0.2s;
+    }
+    .option-pokemon {
+      left: 10%;
+      top: 40%;
+      transform: rotate(10deg);
+    }
+    .option-other-games {
+      right: 10%;
+      top: 40%;
+      transform: rotate(-10deg);
+    }
+    // ----------------------------------
+    .option-nintendo-switch {
+      left: 10%;
+      top: 25%;
+      transform: rotate(20deg);
+    }
+    .option-nintendo-3ds {
+      left: 5%;
+      top: 42%;
+      transform: rotate(5deg);
+    }
+    .option-nintendo-ds {
+      left: 5%;
+      top: 60%;
+      transform: rotate(-10deg);
+    }
+    .option-gba {
+      left: 8%;
+      top: 70%;
+      transform: rotate(-10deg);
+    }
+    .option-gbc {
+      left: 10%;
+      top: 80%;
+      transform: rotate(-20deg);
+    }
+    // ----------------------------------
+    .option-gb {
+      right: 10%;
+      top: 25%;
+      transform: rotate(-20deg);
+    }
+    .option-ngc {
+      right: 5%;
+      top: 42%;
+      transform: rotate(-5deg);
+    }
+    .option-nintendo-64 {
+      right: 5%;
+      top: 60%;
+      transform: rotate(10deg);
+    }
+    .option-psv {
+      right: 8%;
+      top: 70%;
+      transform: rotate(10deg);
+    }
+    .option-pc {
+      right: 10%;
+      top: 80%;
+      transform: rotate(20deg);
+    }
+    .option-mobile {
+      right: 10%;
+      top: 90%;
+      transform: rotate(20deg);
+    }
+    .option-back {
+      right: -20%;
+      bottom: 0;
+      transform: rotate(2deg);
+    }
+  }
+}

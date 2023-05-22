@@ -98,7 +98,7 @@ const initChart = () => {
             <p class="project-time">{{ item.time }} {{ item.platform }}</p>
           </div>
         </div>
-        <div class="project-next-page">===>下一页</div>
+        <!-- <div class="project-next-page">===>下一页</div> -->
       </div>
       <div id="bg-echart" v-if="option"></div>
     </div>

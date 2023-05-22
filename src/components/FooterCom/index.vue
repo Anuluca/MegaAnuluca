@@ -6,6 +6,9 @@ import { visualState } from '@/stores'
 import { ElLoading, ElMessage, ElMessageBox } from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 import { useI18n } from 'vue-i18n'
+import twitterImg from '@/assets/img/twitter_profile.png'
+import bilibiliImg from '@/assets/img/bilibili_profile.png'
+import githubImg from '@/assets/img/github_profile.png'
 
 const { locale } = useI18n()
 
@@ -66,6 +69,7 @@ onMounted(() => {
   expand_element['style'].width = '0px'
   expand_element['style'].overflow = 'hidden'
   text_element['style'].opacity = '0'
+  document.getElementsByClassName(`WEIBO_detail`)[0]['style'].opacity = '0'
   setTimeout(() => {
     expand_element['style'].width = '100%'
     expand_element['style'].overflow = 'hidden'
@@ -80,6 +84,7 @@ const changeLanguage = (lang) => {
   locale.value = lang
   nowChinese.value = localStorage.getItem('lang') === 'zhCn'
 }
+
 const changeTheme = () => {
   console.log(currentRouter.value)
 
@@ -101,22 +106,48 @@ const changeTheme = () => {
   }
 }
 
+// 点击事件
 const contact = (type: string) => {
   let url = ''
-  if (type !== 'E-MAIL') {
+  if (type !== 'EMAIL' && type !== 'WEIBO') {
     if (type === 'TWITTER') {
       url = 'https://twitter.com/TILucario'
-    } else if (type === 'WEIBO') {
-      url = 'https://weibo.com/ryugamine'
     } else if (type === 'BILIBILI') {
       url = 'https://space.bilibili.com/128735968'
     } else if (type === 'GITHUB') {
       url = 'https://github.com/Anuluca'
     }
     window.open(url)
+  } else if (type === 'EMAIL') {
+    const linkNode = document.createElement('a')
+    linkNode.href = 'mailto:tilucario@outlook.com'
+    document.body.appendChild(linkNode)
+    linkNode.click()
   } else {
-    document.location.href = 'mailto:tilucario@outlook.com'
+    // url = 'https://weibo.com/ryugamine'
+    let element = document.getElementsByClassName(`WEIBO_detail`)[0]
+    if (element['style'].opacity == '0') {
+      element['style'].bottom = '30px'
+      element['style'].opacity = '1'
+    } else {
+      element['style'].bottom = '-540px'
+      element['style'].opacity = '0'
+    }
   }
+}
+
+// 鼠标移入
+const mouseOver = (type: string) => {
+  let element = document.getElementsByClassName(`${type}_detail`)[0]
+  element['style'].bottom = '30px'
+  element['style'].opacity = '1'
+}
+
+// 鼠标移出
+const mouseLeave = (type: string) => {
+  let element = document.getElementsByClassName(`${type}_detail`)[0]
+  element['style'].bottom = '-140px'
+  element['style'].opacity = '0'
 }
 </script>
 
@@ -156,11 +187,61 @@ const contact = (type: string) => {
     <!-- 右侧 -->
     <div class="right">
       <div class="text-links">
-        <el-button link type="danger" @click="contact('TWITTER')">TWITTER</el-button>
-        <el-button link type="danger" @click="contact('WEIBO')">WEIBO</el-button>
-        <el-button link type="danger" @click="contact('BILIBILI')">BILIBILI</el-button>
-        <el-button link type="danger" @click="contact('E-MAIL')">E-MAIL</el-button>
-        <el-button link type="danger" @click="contact('GITHUB')">GITHUB</el-button>
+        <span>
+          <div class="TWITTER_detail">
+            <img :src="twitterImg" alt="" />
+          </div>
+          <el-button
+            link
+            type="danger"
+            @click="contact('TWITTER')"
+            @mouseover="mouseOver('TWITTER')"
+            @mouseleave="mouseLeave('TWITTER')"
+            >TWITTER</el-button
+          >
+        </span>
+        <span>
+          <div class="WEIBO_detail">
+            <iframe
+              width="100%"
+              height="520"
+              class="share_self"
+              frameborder="0"
+              scrolling="no"
+              src="https://widget.weibo.com/weiboshow/index.php?language=&width=0&height=520&fansRow=1&ptype=1&speed=0&skin=10&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=7738638501&verifier=4838f435&dpc=1"
+            ></iframe>
+          </div>
+          <el-button link type="danger" @click="contact('WEIBO')">WEIBO</el-button>
+        </span>
+        <span>
+          <div class="BILIBILI_detail">
+            <img :src="bilibiliImg" width="220px" height="220px" alt="" />
+          </div>
+          <el-button
+            link
+            type="danger"
+            @click="contact('BILIBILI')"
+            @mouseover="mouseOver('BILIBILI')"
+            @mouseleave="mouseLeave('BILIBILI')"
+            >BILIBILI</el-button
+          >
+        </span>
+        <span>
+          <el-button link type="danger" @click="contact('EMAIL')">E-MAIL</el-button>
+        </span>
+        <span>
+          <div class="GITHUB_detail">
+            <img :src="githubImg" alt="" />
+          </div>
+          <el-button
+            link
+            type="danger"
+            @click="contact('GITHUB')"
+            @mouseover="mouseOver('GITHUB')"
+            @mouseleave="mouseLeave('GITHUB')"
+            >GITHUB</el-button
+          >
+        </span>
         <el-button link type="danger" disabled>@2018-2023 ANULUCA</el-button>
       </div>
       <el-switch

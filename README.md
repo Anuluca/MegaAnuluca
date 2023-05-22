@@ -2,6 +2,19 @@
 
 基于 Vue3+Typescript 开发的个人博客网站
 
+### 使用的node版本
+
+### 推到git-pages
+cd ./dist
+git pull
+git rm -r --cached .
+git add .
+git commit -m 'a'
+git push -u 
+
+注意：不要修改CNAME文件
+CNAME文件为第一次给github pages配置Custom domain时自动生成的文件，如果删除会导致Custom domain设置清空
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
@@ -16,10 +29,6 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
    1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 

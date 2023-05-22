@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@vueuse/core": "^9.13.0",
     "echarts": "^5.4.2",
     "element-plus": "^2.2.33",
